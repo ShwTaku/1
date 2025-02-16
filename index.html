@@ -7,61 +7,52 @@
   <style>
 	  
 /* Ajustes gerais para telas menores */
-@media screen and (max-width: 600px) {
+
+	  @media screen and (max-width: 600px) {
     body {
         padding: 10px;
     }
 
     header {
         width: 90%;
-        padding: 15px;
+        padding: 20px;
+    }
+
+    .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    button {
+        font-size: 16px;
+        padding: 15px 30px;
     }
 
     h1 {
         font-size: 1.5rem;
     }
 
-    .game-container {
-        padding: 10px;
-        width: 90%;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 10px 15px;
-        width: 100%;
-        margin: 5px 0;
-    }
-
     .question {
-        font-size: 1rem;
-        padding: 10px;
-        width: 90%;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        position: static;
-        margin: 10px 0;
-    }
-
-    .popup-content {
-        width: 90%;
+        font-size: 1.2rem;
         padding: 15px;
     }
 
-    /* Ajustes para as nuvens */
-    .nuvem {
-        width: 100px;
-        top: 10px;
+	.imagem-container {
+  width: 100%;  /* Garante que o container da imagem ocupa toda a largura disponível */
+  max-width: 400px; /* Um valor máximo para evitar que a imagem fique muito grande */
+  overflow: hidden;  /* Caso algo saia do container, será escondido */
+}
+		  
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* A imagem será ajustada para caber dentro do container sem cortar */
     }
 
-    /* Ajustes para os personagens */
-    .personagem {
-        width: 100px;
-        top: auto;
-        bottom: 10px;
+	#diabetesImage, #Coelho1, #Femino, #Masculino, #Nuvem {
+        display: contain; /* Ou ajuste o tamanho e posição conforme necessário */
     }
 }
 	  
