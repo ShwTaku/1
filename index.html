@@ -793,15 +793,6 @@ function tocarSom() {
 document.querySelectorAll("button").forEach(function(botao) {
     botao.addEventListener("click", tocarSom);
 });
-
-
-/ Bloqueia a rolagem
-document.body.style.overflow = 'hidden';
-
-// Opcional: Bloquear rolagem em dispositivos móveis
-document.addEventListener('touchmove', function(event) {
-    event.preventDefault();
-}, { passive: false });
 	  
     document.getElementById("startButton").onclick = startGame;
   </script>
