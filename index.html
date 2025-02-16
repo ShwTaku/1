@@ -795,6 +795,14 @@ document.querySelectorAll("button").forEach(function(botao) {
 });
 
 
+/ Bloqueia a rolagem
+document.body.style.overflow = 'hidden';
+
+// Opcional: Bloquear rolagem em dispositivos móveis
+document.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, { passive: false });
+	  
     document.getElementById("startButton").onclick = startGame;
   </script>
 
