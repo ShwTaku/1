@@ -6,56 +6,6 @@
   <title>Jogo Missão Glicose</title>
   <style>
 	  
-/* Ajustes gerais para telas menores */
-
-	  @media screen and (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    header {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-    button {
-        font-size: 16px;
-        padding: 15px 30px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .question {
-        font-size: 1.2rem;
-        padding: 15px;
-    }
-
-	.imagem-container {
-  width: 100%;  /* Garante que o container da imagem ocupa toda a largura disponível */
-  max-width: 400px; /* Um valor máximo para evitar que a imagem fique muito grande */
-  overflow: hidden;  /* Caso algo saia do container, será escondido */
-}
-		  
-    img {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* A imagem será ajustada para caber dentro do container sem cortar */
-    }
-
-	#diabetesImage, #Coelho1, #Femino, #Masculino, #Nuvem {
-        display: contain; /* Ou ajuste o tamanho e posição conforme necessário */
-    }
-}
-	  
     body {
       font-family: 'Comic Sans MS', sans-serif;
       background-color: #6495ED;
@@ -169,7 +119,7 @@ body {
       padding: 40px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       max-width: 600px;
-      width: 100%;
+      width: 90%;
 	max-width: 600px; /* Limita a largura máxima */
       border: 5px solid #FFCBDB; /* Borda do retângulo */
     }
@@ -214,26 +164,34 @@ body {
             background-color: #f9f9f9;
         }
 	  
-	  /* Estilo para a janela pop-up */
-        #popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background-color: white;
-            padding: 70px;
-            border-radius: 80px;
-            width: 400px;
-            max-height: 80%;
-            overflow-y: auto;
-        }
+	  /* Estilo para o fundo escuro do popup */
+#popup {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Mantém o popup acima de tudo */
+}
+
+/* Estilo do conteúdo do popup */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%; /* Responsivo */
+    max-width: 400px;
+    max-height: 80vh; /* Evita que ultrapasse a tela */
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
         button {
             margin: 10px;
         }
@@ -246,11 +204,6 @@ body {
             transform: translateX(-50%);
         }
 	  
-	  /* Responsividade para telas menores */
-    @media screen and (max-width: 600px) {
-      .question {
-        width: 90%;
-      }
 
       .game-container {
         padding: 20px;
@@ -277,7 +230,7 @@ body {
 <audio id="somPontuacao" src="E:\PAP\sons/som_pontuacao.mp3" preload="auto"></audio>
 	
 <!--- IMAGENS POR AQUI -->
-<img id="diabetesImage" src="E:\PAP\Imagens/Diabetes2.png" alt="Foto" style="width: 500px; height: auto; position: absolute; top: 30px; left: 700px;">
+<img id="diabetesImage" src="E:\PAP\Imagens/Diabetes2.png" alt="Foto" style="width: 500px; height: auto; position: absolute; top: 65px; left: 700px;">
 <img id="Coelho1" class="personagem" src="E:\PAP\Personagens\Dr.Glicorapido/DUVIDA.png" alt="personagem" style="width: 500px; height: auto; position: absolute; top: 600px; left: 1400px;">
 <img id="Femino" class="personagem" src="E:\PAP\Personagens\Feminino/3.png" alt="personagem" style="width: 200px; height: auto; position: absolute; top: 500px; right: 1500px;">
 <img id="Masculino" class="personagem" src="E:\PAP\Personagens\Masculino/normal2.png" alt="personagem" style="width: 200px; height: auto; position: absolute; top: 100px; right: 1500px;">
@@ -317,6 +270,22 @@ body {
     let currentScore = 0;
     let questionIndex = 0;
 
+	  
+// Função para abrir o popup
+function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+// Função para fechar o popup
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// Garante que o popup esteja fechado ao carregar a página
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("popup").style.display = "none";
+});
+	  
 // Função para tocar o som
 function tocarSom() {
     var som = document.getElementById("som");
